@@ -1,247 +1,454 @@
-body{
+*{
   margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+body{
+  max-width: 100vw;
+  background-color: #5a189a;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  overflow-x: hidden;
+}
+.my-navbar{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height: 100px;
+  padding: 0;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+}
+
+.navbar-logo a{
+  text-decoration: none;
+  color: #FFF;
+  font-size: 36px;
+  font-family: 'Lemonada', cursive;
+  font-weight: 200;
+}
+/* NAVBAR TOGGLE STARTS */
+.toggle{
+  position:relative;
+  z-index: 10000;
   display: flex;
   flex-direction: column;
-  font-family: 'Nunito', sans-serif;
-  color:white;
+  justify-content: center;
+  align-items: flex-end;
+  width:36px;
+  height: 36px;
+  /* border: 1px solid #FFF;
+  border-radius: 7px; */
+  cursor: pointer;
 }
+
+.toggle span{
+  margin: 4px 0;
+  border-bottom:2px solid #FFF;
+  position:relative;
+  z-index: 10000;
+}
+.toggle #first-span{
+  width:32px;
+}
+.toggle #second-span{
+  width:24px;
+}
+.toggle #third-span{
+  width:16px;
+}
+.toggle-active>#first-span{
+  animation: first-span-animation 1.2s forwards;
+  animation-delay: 1.1s ;
+  animation-iteration-count: 1;
+}
+.toggle-active>#second-span{
+  animation: middle-span 1s forwards;
+  animation-iteration-count: 1;
+}
+.toggle-active>#third-span{
+  animation: last-span 1.2s forwards;
+  animation-delay: 1.1s;
+  animation-iteration-count: 1;
+}
+@keyframes first-span-animation {
+  0%{
+    transform: 0;
+  }
+  100%{
+    transform: rotate(45deg);
+    width:36px;
+    position: absolute;
+  }
+}
+@keyframes middle-span {
+  0%{
+    width: 100%;
+  }
+  100%{
+    width: 0;
+  }
+}
+@keyframes last-span {
+  0%{
+    transform: 0;
+  }
+  100%{
+    transform: rotate(-45deg);
+    width: 36px;
+    position: absolute;
+  }
+}
+/* Toggle Active Links */
+.passive-links{
+  display: none;
+}
+.active-links{
+  /* -background-color: #E0AAFF; */
+  background: rgba(224, 170, 255, 0.34);
+  border-bottom-left-radius: 16px;
+  border-top-left-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.6px);
+  -webkit-backdrop-filter: blur(5.6px);
+  border: 1px solid rgba(224, 170, 255, 0.3);
+  position: absolute;
+  z-index: 1000;
+  top:-15px;
+  right:-15px;
+  width:340px;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: side-nav 1.1s ease;
+  animation-iteration-count: 1;
+}
+.active-links a{
+  position: relative;
+  padding:15px 0;
+  text-decoration: none;
+  font-size: 2rem;
+  line-height: 1.5;
+  letter-spacing: 7px;
+  color:#01342d;
+  animation: side-nav-links 1s ease forwards;
+  animation-delay: 1.2s;
+  animation-iteration-count: 1;
+  opacity: 0;
+  font-family: 'Aleo', serif;
+}
+@keyframes side-nav {
+  0%{
+    opacity: 0;
+    transform: translateX(180px) translateY(-180px);
+  }
+  100%{
+    opacity:1;
+    transform: translateX(0) translateY(0);
+  }
+}
+@keyframes side-nav-links {
+  0%{
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* NAVBAR TOGGLE ENDS */
+/* SIDEBAR */
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:75px;
+  background-color: rgba(239, 239, 239, 0.4);
+  position: fixed;
+  left: 0;
+  top:150px;
+  border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;
+}
+.sidebar a{
+  color:#3C096C;
+  font-size: 2.5rem;
+  padding: 5px 15px;
+}
+.sidebar a:hover{
+  background-color: #e0aaff;
+  border-radius: 7px;
+}
+/* SIDEBAR ENDS */
 section{
-  width: 100%;
-  min-height:100vh;
-  max-height: 100%;
-}
-h1, h2, h3{
-  font-family: 'PT Serif', serif;
-}
-@media (min-height:1000px) {
-  section{
-    min-height: 100%;
-  }
-  #welcome-section{
-    padding:25% 0;
-  }
-}
-a{
-  text-decoration: none;
-  color:#FCDEC0;
-}
-a:hover{
-  text-decoration: none;
-   color:#FF8474;
-}
-@media (min-width:1024px) {
-  h1{
-    font-size:3.5rem;
-    font-weight: 400;
-  }
-  h3{
-    font-size: 2rem;
-  }
-}
-.container-fluid{
-  margin:2% 0;
-}
-/* WELCOME */
-#welcome-section{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(
-62deg, #FCDEC0  0%,  #7D5A50 100%);
-}
-/* CURSOR EFFECT ON THE ANIMATION */
-.typing{
-  margin-left: 2px;
-  border-right: 2px solid white;
-}
-/* NAVBAR */
-.navbar{
-  background-color: #483434 !important;
-}
-.navbar-nav{
-  width: 100%;
-  justify-content: flex-end;
-}
-.nav-link{
-  color: white !important;
-}
-.nav-link:hover{
-  color: #7D5A50 !important;
-}
-.navbar-toggler{
-  background-color: #FCDEC0;
-}
-/* ABOUT */
-#About{
-  background-color: #483434 ;
-}
-.skills-foto{
-  width: 100%;
-  height: 100%;
-  max-width: 150px;
-  max-height: 150px;
-}
-.img-col1{
-  display: flex;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
-#profile-foto{
-  width: 100%;
-  height: 100%;
-  max-width: 250px;
-  max-height: 250px;
-  border-radius: 100%;
-}
-@media (min-width:992px) {
-  .text-col1{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-  }
-  .text-col2{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    margin:3% 0;
-  }
-  .text-col3{
-    margin: 3% 0;
-  }
-  .img-col2, .img-col3{
-    display: flex;
-    margin:3% 0;
-    width: 100%;
-    height: 100%;
-  }
-  .img-col2{
-    justify-content: flex-start;
-    padding-left:3%;
-  }
-  .img-col3{
-    justify-content: flex-end;
-    padding-right: 3%;
-  }
-}
-@media (max-width:991px) {
-  .img-col1, .img-col2, .img-col3, .text-col1, .text-col2, .text-col3{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .img-col1{
-    padding-top:2%
-  }
-  .text-col3 footer{
-    padding-bottom: 2%;
-  }
-}
-.text-col1 header{
-  padding-top:3%;
-}
-#About p{
-  width: 60%;
-}
-#About footer{
-  padding-bottom: 2%;
-}
-/* PROJECTS */
-
-#projects{
-  background: linear-gradient(
-62deg, #7D5A50  0%, #FCDEC0 100%);
-  text-align: center;
-}
-#projects header{
-  margin:15px 0 25px;
-}
-.project-tile{
-  margin:10px 20px;
-  background-color:#7D5A50;
-  border:1px solid #7D5A50;
-  border-radius: 5px;
-
+  max-width: 100vw;
+  padding: 50px 75px;
+  min-height: 100vh;
 }
 
 .row{
-  max-width: 1280px;
-}
-.project-link{
-  display: flex;
-  flex-direction: column;
-}
-.project-img{
   width: 100%;
-  object-fit: cover;
-  display: block;
-  background-color: #7D5A50;
-  border:1px solid #7D5A50;
-  border-radius: 5px;
-}
-.pro-title{
-  width: 100%;
-  background-color: #7D5A50;
-  color: white;
-  font-size: 1.25rem;
-  padding:3% 0;
-  text-align: center;
-
-}
-.pro-title span{
-  font-size: 1.25rem;
-  color: #FF8474;
-  letter-spacing: 2;
-}
-.hide{
-  display: none;
-}
-.prod-land{
-  height: 100%;
-}
-
-/* CONTACT */
-#Contact{
-  background-color: #483434;
-}
-#Contact header{
-  padding:10px;
-  text-align: center;
-  margin: 25px 0 25px;
-}
-.c-details{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin:0;
 }
-.c-details .row{
-  width: 100%;
+.container-fluid{
+  padding: 0;
+  margin: 0;
 }
-#Contact a{
+/* HOME PAGE */
+#home{
+  padding-top:100px;
+}
+.home-header{
+  color:#DDDDDD;
+  font-family: 'Noto Sans', sans-serif !important;
+  padding-left:25px;
+}
+.greeting{
+  font-weight: 600;
+  letter-spacing: 7px;
+  line-height: 1.5;
+  font-size: 5rem;
+  max-width: 600px;
+}
+.sub-header{
+  font-size:1.5rem;
+  line-height: 1.5;
+  letter-spacing: 5px;
+  max-width: 600px;
+}
+.img-wrapper{
+  width:100%;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 3% 0;
 }
-.c-icon{
-  font-size: 200%;
-  color:#FCDEC0;
+.img-wrapper img{
+  max-width: 450px;
+  width:100%;
+  height: auto;
+  border:2px solid #3B5249;
+  border-radius: 7px 7px;
+  object-fit: cover;
 }
-.c-hover{
-  color:#FF8474;
+/* ABOUT PAGE */
+#about{
+  width: 100vw;
+  background-color: #e0aaff;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  color: #01342d;
 }
-/*//Below, in order to make 1 letter space between logo and text  */
-.c-icon::after{
-   content:"A";
-  font-size: 10px;
-  visibility:hidden;
+#about h2, #about h3{
+  font-family: 'Aleo', serif;
+}
+.about-heading{
+  text-align: center;
+  padding: 20px 0;
+}
+.about-heading h2{
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 5px;
+}
+.personal-info h3, .skills h3{
+  font-size: 2.3rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.personal-info, .skills{
+  padding-left: 25px;
+}
+.personal-info p, .skills-div span, .resume a{
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.personal-info p a{
+  color:#01342d;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.skills-div{
+  padding:15px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.skills-div span{
+  margin: 5px;
+  padding: 10px 15px;
+  color: #EFEFEF;
+  background-color: #01342d;
+  border-radius: 2px;
+}
+.skills-div span:hover{
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+.resume{
+  margin: 15px 5px;
+}
+.resume a{
+  color: #EFEFEF;
+  background-color: #3C096C;
+  padding: 15px 25px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px #01342d solid;
+  border-radius: 8px;
+  background: linear-gradient(to right, #01342d 50%, #3C096C  50%);
+  background-size: 200% 100%;
+  background-position:right bottom;
+  transition:all 1.5s ease;
+}
+.resume a:hover{
+  background-position:left bottom;
+}
+/* PROJECTS SECTION */
+#card-row{
+  align-items: flex-start;
+}
+.projects-header h2{
+  text-align: center;
+  font-size: 3rem;
+  line-height: 1.5;
+  font-weight: 500;
+  color: #EFEFEF;
+}
+@media (max-width:992px) {
+  #card-row .project-card{
+    display: flex;
+    justify-content: center;
+  }
+}
+.card{
+  position:static;
+  background-color: rgba(123, 44, 191, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  color:#EFEFEF;
+  font-family: 'Nunito Sans', sans-serif;
+  max-width: 400px;
+  width: 100%;
+  margin: 15px 25px;
+}
+.card-title{
+  font-size: 2rem;
+}
+.card-title, .card-list-header ,.projects-header{
+  font-family: 'Aleo', serif;
+  letter-spacing: 4px;
+}
+.list-group-item{
+  color:#EFEFEF;
+  animation: release 1s linear forwards;
+  background-color: transparent;
+}
+@keyframes release {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity:1;
+  }
+}
+.hidden-card-part{
+  display: none;
+}
+
+.card-link{
+  text-decoration: none;
+  color:#EFEFEF;
+  padding:5px 5px 5px 0;
+}
+.card-link:hover{
+  color:#01342d;
+}
+/* Footer & Contact */
+#contact{
+  width: 100vw;
+  min-height: 350px;
+  background-color: #01342d;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  color:#3C096C;
+  font-family: 'Nunito Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#contact a{
+  color:#EFEFEF;
+  text-decoration: none;
+  font-size: 1.75rem;
+}
+#contact h4, #contact h6{
+  font-family: font-family: 'Aleo', serif;
+  padding-left:75px;
+  letter-spacing: 3px;
+}
+
+#contact h4{
+    font-size: 2rem;
+    font-weight: 400;
+}
+#contact h6{
+  font-size: 1.75rem;
+  padding-bottom: 50px;
+}
+.contact-row{
+  align-items: center;
+  justify-content: center;
+}
+.contact-col{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width:576px) {
+  #contact header{
+    padding-left: 10px;
+    padding-top: 10px;
+  }
 }
