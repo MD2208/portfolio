@@ -16,7 +16,6 @@ body{
   left:0;
   width:100vw;
   height: 100px;
-  padding: 0;
   background-color: transparent;
   display: flex;
   flex-direction: row;
@@ -337,6 +336,7 @@ section{
   text-decoration: none;
   border: 1px #01342d solid;
   border-radius: 8px;
+  background-color: #3C096C;
   background: linear-gradient(to right, #01342d 50%, #3C096C  50%);
   background-size: 200% 100%;
   background-position:right bottom;
@@ -424,7 +424,7 @@ section{
   font-size: 1.75rem;
 }
 #contact h4, #contact h6{
-  font-family: font-family: 'Aleo', serif;
+  font-family: 'Aleo', serif;
   padding-left:75px;
   letter-spacing: 3px;
 }
@@ -446,9 +446,91 @@ section{
   justify-content: center;
   align-items: center;
 }
-@media (max-width:576px) {
+@media (max-width:599px){
+  .sidebar{
+    display: none;
+  }
+  section{
+    padding:20px 40px;
+    width: 100vw;
+  }
   #contact header{
     padding-left: 10px;
     padding-top: 10px;
+  }
+  #home h1{
+    font-size:3.2rem;
+  }
+  .my-navbar{
+    padding: 0 3px;
+    width: 100vw;
+  }
+  .navbar-logo a{
+    font-size: 24px;
+  }
+  .toggle{
+    margin-right: 24px;
+    width: 24px;
+    height: 24px;
+  }
+  .toggle #first-span{
+    width:18px;
+  }
+  .toggle #second-span{
+    width:14px;
+  }
+  .toggle #third-span{
+    width:10px;
+  }
+  .active-links{
+    width:300px
+    height:320px;
+    background: rgba(224, 170, 255, 0.46);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .active-links a{
+    font-size: 1.6rem;
+  }
+  .about-heading h2, .projects-header h2{
+    font-size: 2rem;
+  }
+  .personal-info h3, .skills h3,{
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .personal-info p, .skills-div span, .resume a{
+    font-size: 1.15rem;
+  }
+  .skills-div span{
+    padding: 5px 7px;
+  }
+  .resume a{
+    padding: 10px 20px;
+  }
+  .card{
+    width: 100%;
+  }
+  .card-title h3{
+    font-size:1.4rem;
+  }
+  .card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .card-link{
+    padding: 5px 0;
+    margin-left: 0 !important;
+  }
+  #contact h4{
+    font-size: 1.75rem;
+  }
+  #contact h6, #contact a{
+    font-size: 1.3rem;
+  }
+  #contact h4, #contact h6{
+    padding-left:30px;
   }
 }
