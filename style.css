@@ -445,7 +445,10 @@ section{
   display: flex;
   justify-content: center;
   align-items: center;
+  padding:0;
 }
+
+/* GENERAL MEDIA Qs */
 @media (max-width:599px){
   .sidebar{
     display: none;
@@ -495,7 +498,7 @@ section{
   .about-heading h2, .projects-header h2{
     font-size: 2rem;
   }
-  .personal-info h3, .skills h3,{
+  .personal-info h3, .skills h3{
     font-size: 1.5rem;
     font-weight: 600;
   }
@@ -532,5 +535,24 @@ section{
   }
   #contact h4, #contact h6{
     padding-left:30px;
+  }
+}
+
+@media (max-width:991px) and (min-width:776px) {
+  #contact a{
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width:1200px){
+  .home-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (min-width:1200px){
+  .sub-header{
+      max-width: 95%;
   }
 }
