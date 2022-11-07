@@ -15,7 +15,7 @@ body{
   top:0;
   left:0;
   width:100vw;
-  height: 100px;
+  height: 80px;
   background-color: transparent;
   display: flex;
   flex-direction: row;
@@ -184,9 +184,19 @@ body{
   font-size: 2.5rem;
   padding: 5px 15px;
 }
+.sidebar-animation{
+  animation: rotate 1s ease;
+  background-color: rgba(224, 170, 255, 0.4);
+  border-radius: 50%;
+}
 .sidebar a:hover{
   background-color: #e0aaff;
   border-radius: 7px;
+}
+@keyframes rotate {
+  100%{
+    transform: rotate(360deg);
+  }
 }
 /* SIDEBAR ENDS */
 section{
@@ -425,7 +435,7 @@ section{
 }
 #contact h4, #contact h6{
   font-family: 'Aleo', serif;
-  padding-left:75px;
+  padding-left:80px;
   letter-spacing: 3px;
 }
 
